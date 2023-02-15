@@ -1,7 +1,9 @@
+javac PairP.java
 javac Node.java
-javac Tree.java
+javac PredictionTree.java
 
 java Main.java
 
+rm PairP.class
 rm Node.class
-rm Tree.class
+rm PredictionTree.class

@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 public class Main {
     private static String filePath = "no_repetitions_all_dictionary_1675539110.txt";
-
+    // private static String filePath = "learn.txt";
+    
     public static boolean findInArray(ArrayList<String> tab, String x) {
         if (tab.size() == 0)
             return false;
@@ -32,7 +33,7 @@ public class Main {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             while ((line = br.readLine()) != null) {
-                String tmp = line.split("\t")[0].split(" ")[0];
+                String tmp = line.split("\t")[0].split(" ")[0].toLowerCase();
                 if (tmp.length() > 4 && !findInArray(tab, tmp)) {
                     tab.add(tmp);
                 }
@@ -40,18 +41,20 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return tab;
     }
 
     public static void main(String[] args) {
         ArrayList<String> tab = clearData();
-        System.out.println(tab.size());
 
-        Tree tree = new Tree();
-        tree.addNode(1, 'a');
-        tree.showTree();
-        tree.addNode(2, 'b');
-        tree.showTree();
+        PredictionTree tree = new PredictionTree();
+        for (String word: tab) {
+            tree.addWord(word);
+        }
+
+        tree.increaseWord("sezam");
+        tree.increaseWord("sezam");
+
+        System.out.print(tree.predict("se"));
     }
 }

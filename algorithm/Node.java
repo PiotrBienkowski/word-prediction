@@ -7,6 +7,7 @@ public class Node {
     public ArrayList<Integer> neighbours;
     public boolean isEndOfWord;
     public int numberOfUses;
+    public ArrayList<PairP> maxSubtree;
 
     public Node(int id, int parent, char sign) {
         this.id = id;
@@ -15,5 +16,6 @@ public class Node {
         this.sign = sign;
         this.isEndOfWord = false;
         this.numberOfUses = 0;
+        this.maxSubtree = new ArrayList<>();
     }
 }
