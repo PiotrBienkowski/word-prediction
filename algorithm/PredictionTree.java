@@ -85,13 +85,13 @@ public class PredictionTree {
         return ret;
     }
 
-    public void increaseWord(String word) {
+    public void increaseWord(String word, int number) {
         int vertex = searchWord(word, true);
         if (vertex == -1) {
             return;
         }
         int signIndex = 0;
-        this.tree.get(vertex).numberOfUses += 1;
+        this.tree.get(vertex).numberOfUses += number;
         while(signIndex < word.length()) {
             ArrayList<PairP> tmp = new ArrayList<>();
             for (int v: this.tree.get(vertex).neighbours) {
@@ -117,6 +117,8 @@ public class PredictionTree {
     public ArrayList<String> predict(String pref) {
         int vertex = searchWord(pref, false);
         ArrayList<String> ret = new ArrayList<>();
+        if (vertex == -1) 
+            return ret;
         for (PairP i: this.tree.get(vertex).maxSubtree) {
             ret.add(printWord(i.indexOfMax));
         }        
