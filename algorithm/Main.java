@@ -50,6 +50,7 @@ public class Main {
         PredictionTree tree = new PredictionTree();
         for (String word: tab) {
             tree.addWord(word);
+            // mozemy od razu robic incease word 
         }
 
         tree.increaseWord("sezam");
