@@ -5,7 +5,7 @@
 Algorithm for prediction of word endings. 
 Example implementation in a mobile keyboard:
 
-<img src="https://user-images.githubusercontent.com/120416913/219973743-0dbaf256-002e-4a8a-889c-085730388014.png" alt="Group 304" style="width:50%;">
+<img src="https://user-images.githubusercontent.com/120416913/219973743-0dbaf256-002e-4a8a-889c-085730388014.png" alt="Group 304" style="width:30%;">
 
 </br>
 
@@ -40,7 +40,8 @@ Time complexity:
 <br />
 
 A part of tree:
-![Group 324](https://user-images.githubusercontent.com/120416913/219974992-c5582142-2a46-4cdb-b2d4-1aaef6a0524f.png)
+
+<img src="https://user-images.githubusercontent.com/120416913/219974992-c5582142-2a46-4cdb-b2d4-1aaef6a0524f.png" alt="Group 304" style="width:50%;">
 
 ## Collecting data
 ### Dictionary
