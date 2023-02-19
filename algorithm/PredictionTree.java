@@ -4,7 +4,7 @@ import java.util.Collections;
 public class PredictionTree {
     public ArrayList<Node> tree;
     private int uniqueId;
-    private static int limitOfPrediction = 3;
+    private static int limitOfPrediction = 5;
 
     public PredictionTree() {
         this.tree = new ArrayList<>();
