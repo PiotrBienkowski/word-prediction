@@ -68,6 +68,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        System.out.println("initializing...");
         Database database = new Database();
         PredictionTree tree = new PredictionTree();
         buildTree(database, tree);
