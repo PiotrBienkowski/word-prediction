@@ -4,9 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.List;
+import java.util.Arrays;
 
 public class Main {
-    private static String filePath = "no_repetitions_all_dictionary_1675539110.txt";
+    private static String filePath = "input/no_repetitions_all_dictionary_1675539110.txt";
     // private static String filePath = "learn.txt";
     
     public static boolean findInArray(ArrayList<String> tab, String x) {
@@ -67,6 +69,46 @@ public class Main {
         }
     }
 
+    public static void algorithm_testing(Database database, PredictionTree tree, String testing_file_name) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(testing_file_name));
+            String line;
+            List<String> wordsList = new ArrayList<>();
+
+            while ((line = reader.readLine()) != null) {
+                String[] words = line.split(" ");
+                wordsList.addAll(Arrays.asList(words));
+            }
+            reader.close();
+
+            int successes = 0;
+            int fails = 0;
+
+            for (String word: wordsList) {
+                if (word.length() > 3) {
+                    ArrayList<String> tmp = tree.predict(word.substring(0, 3));
+                    boolean ok = false;
+                    for (String x: tmp){
+                        if (x.equals(word)) {
+                            ok = true;
+                        }
+                    }
+                    if (ok)
+                        successes += 1;
+                    else
+                        fails += 1;
+                    // addFinalSentence(word, database, tree);
+                }
+            }
+            System.out.println("------------------------");
+            System.out.println("Successes: " + Integer.toString(successes));
+            System.out.println("Fails: " + Integer.toString(fails));
+            System.out.println("Accuracy: " + String.format("%.2f", (double)successes / (fails + successes) * 100) + "%");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println("initializing...");
         Database database = new Database();
@@ -76,6 +118,7 @@ public class Main {
         System.out.println("Commands:");
         System.out.println("P - word prediction command");
         System.out.println("A - the final version of the sentence, model training");
+        System.out.println("T - automatic testing");
         System.out.println("EXIT - close the program");
 
         Scanner scanner = new Scanner(System.in);
@@ -83,19 +126,33 @@ public class Main {
             System.out.print("> ");
             String line = scanner.nextLine();
             if (line.equals("P")) {
+                // predicting
                 System.out.print("Type prefix: ");
                 Scanner scanner2 = new Scanner(System.in);
                 String prefix = scanner2.nextLine();
                 System.out.println(tree.predict(prefix));
+
             } else if (line.equals("A")) {
+                // adding new words
                 System.out.print("Type sentence: ");
                 Scanner scanner2 = new Scanner(System.in);
                 String sentence = scanner2.nextLine();
                 addFinalSentence(sentence, database, tree);
+
+            } else if (line.equals("T")) {
+                // testing
+                System.out.print("Type file name: ");
+                Scanner scanner2 = new Scanner(System.in);
+                String file_name = scanner2.nextLine();
+                algorithm_testing(database, tree, file_name);
+                break;
+                
             } else if (line.toLowerCase().equals("exit")) {
                 break;
+
             } else {
                 System.out.println("Command not found.");
+
             }
             System.out.println();
         }

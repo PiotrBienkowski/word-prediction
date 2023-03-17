@@ -8,7 +8,7 @@ audio = AudioSegment.from_wav(orginalFileName + ".wav")
 file_duration = 2 * 60 * 1000
 newFile = open(orginalFileName + "_" + str(int(time.time())) + ".txt", "w")
 
-for i in range(12):
+for i in range(9):
     start_time = i * file_duration
     end_time = (i + 1) * file_duration
     filename = "tmp.wav"

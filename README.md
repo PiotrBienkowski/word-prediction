@@ -37,6 +37,11 @@ Time complexity:
 - Predictiong words: <b>O(1)</b>;
 - Increasing word: <b>O(n * k)</b>, n - number of words, k - word length.
 
+Accuracy:
+- Successes: 624
+- Fails: 674
+- Accuracy: 48,07%
+
 <br />
 
 A part of tree:

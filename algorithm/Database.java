@@ -15,9 +15,9 @@ public class Database {
     private static String trainginFilePath;
 
     public Database() {
-        this.dbName = "database.db";
-        this.infoName = ".info_" + dbName;
-        this.trainginFilePath = "all_transcripts_1676637361.txt";
+        this.dbName = "database/database.db";
+        this.infoName = "database/.info_" + dbName;
+        this.trainginFilePath = "input/all_transcripts_1676637361.txt";
         // this.trainginFilePath = "all_transcripts_learn.txt";
     }
 
@@ -124,7 +124,6 @@ public class Database {
 
     public static void inceaseWord(String word) {
         word = word.toLowerCase();
-        System.out.println(word);
         try (BufferedReader br = new BufferedReader(new FileReader(dbName))) {
             String line;
             int cnt = 0;
@@ -133,7 +132,6 @@ public class Database {
                 String tmp = line.split("\t")[0];
                 int tmpNumber = Integer.parseInt(line.split("\t")[1]) + 1;
                 if (tmp.equals(word)) {
-                    System.out.println("dupa");
                     try {
                         File file = new File(dbName);
                         BufferedReader reader = new BufferedReader(new FileReader(file));
